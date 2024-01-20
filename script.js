@@ -6,9 +6,14 @@ function getComputerChoice(array){
 
 //let playerSelection  = prompt ('Choose Rock Paper or Scissors');
 
+let playerScoreCount = 0;
+let computerScoreCount = 0;
+let finalRoundScore;
+
+
 function gameRound(playerSelection, computerSelection){
-    let playerChoice = playerSelection.toLowerCase();
-    let computerChoice = computerSelection.toLowerCase();
+    let playerChoice = playerSelection;
+    let computerChoice = computerSelection;
     let result = '';
     let playerScore = 0;
     let computerScore = 0;
@@ -16,18 +21,20 @@ function gameRound(playerSelection, computerSelection){
         case 'rock':
             if (computerChoice == 'rock'){
                 result = "It's a tie";
+                computerScoreCount++;
+                playerScoreCount++;
             }
             
             
             else if(computerChoice == 'paper'){
                 result = 'You Lose! Paper beats Rock';
-                computerScore++;
+                computerScoreCount++;
             }
             
 
             else{
                 result = 'You Win! Rock beats Scissors';
-                playerScore++;
+                playerScoreCount++;
             }
             
         break;
@@ -35,16 +42,20 @@ function gameRound(playerSelection, computerSelection){
         case 'paper':
             if (computerChoice == 'rock'){
                 result = "You win! Paper beats Rock";
-                playerScore++;
+                playerScoreCount++;
             }
            
             
-            else if(computerChoice == 'paper')
-            result = "It's a tie!";
+            else if(computerChoice == 'paper'){
+                result = "It's a tie!";
+                playerScoreCount++;
+                computerScoreCount++;
+            }
+            
 
             else{
                 result = 'You Lose! Scissors beats Paper';
-                computerScore++;
+                computerScoreCount++;
             }
             
         break;
@@ -52,29 +63,30 @@ function gameRound(playerSelection, computerSelection){
         case 'scissors':
             if (computerChoice == 'rock'){
                 result = "You Lose! Rock beats Scissors";
-                computerScore++;
+                computerScoreCount++;
             }
             
             
             else if(computerChoice == 'paper'){
                 result = 'You Win! Scissors beats Paper';
-                playerScore++;
+                playerScoreCount++;
             }
             
 
-            else
-            result = "It's a tie!";
+            else{
+                result = "It's a tie!";
+                playerScoreCount++;
+                computerScoreCount++;
+            }
+            
         break;
     }
 
-    let finalScore = [result, playerScore, computerScore];
+    let finalScore = [result, playerScoreCount, computerScoreCount];
     return finalScore;
 
 };
 
-let playerScoreCount = 0;
-let computerScoreCount = 0;
-let finalRoundScore;
 
 
 //console.log(gameRound(playerSelection, computerSelection));
@@ -95,11 +107,18 @@ function game(){
     rockButton.addEventListener('click', () =>
     {
         let playerSelection  = 'rock';
-        let computerSelection = (getComputerChoice(['rock', 'paper', 'scissors']));
+        let computerSelection = getComputerChoice(['rock', 'paper', 'scissors']);
         finalRoundScore = gameRound(playerSelection, computerSelection);
 
         //add result to DOM
-        display.textContent = 'You chose '+playerSelection+ ' Computer chose '+computerSelection;
+        //display.textContent = 'You chose '+playerSelection+ ' Computer chose '+computerSelection;
+        //console.log(finalRoundScore[0]);
+        //playerScoreCount = playerScoreCount + finalRoundScore[1];
+        //console.log(finalRoundScore[2]);
+        //computerScoreCount = computerScoreCount + finalRoundScore[2];
+       
+
+        display.textContent = finalRoundScore[0] + ' you chose: '+playerSelection+' computer picked: '+computerSelection+ ' the score for you is now: ' +playerScoreCount+ " and computer's score is: "+computerScoreCount;
         
 
     });
@@ -109,7 +128,16 @@ function game(){
         let playerSelection  = 'paper';
         let computerSelection = (getComputerChoice(['rock', 'paper', 'scissors']));
         finalRoundScore = gameRound(playerSelection, computerSelection);
-        console.log(playerSelection);
+        //add result to DOM
+        //display.textContent = 'You chose '+playerSelection+ ' Computer chose '+computerSelection;
+        //console.log(finalRoundScore[0]);
+        //playerScoreCount = playerScoreCount + finalRoundScore[1];
+        //console.log(finalRoundScore[2]);
+        //computerScoreCount = computerScoreCount + finalRoundScore[2];
+       
+
+        display.textContent = finalRoundScore[0] + ' you chose: '+playerSelection+' computer picked: '+computerSelection+ ' the score for you is now: ' +playerScoreCount+ " and computer's score is: "+computerScoreCount;
+        
 
     });
 
@@ -118,8 +146,16 @@ function game(){
         let playerSelection  = 'scissors';
         let computerSelection = (getComputerChoice(['rock', 'paper', 'scissors']));
         finalRoundScore = gameRound(playerSelection, computerSelection);
-        console.log(playerSelection);
+        //add result to DOM
+        //display.textContent = 'You chose '+playerSelection+ ' Computer chose '+computerSelection;
+        //console.log(finalRoundScore[0]);
+        //playerScoreCount = playerScoreCount + finalRoundScore[1];
+        //console.log(finalRoundScore[2]);
+        //computerScoreCount = computerScoreCount + finalRoundScore[2];
+        
 
+        display.textContent = finalRoundScore[0] +' you chose: '+playerSelection+' computer picked: '+computerSelection+ ' the score for you is now: ' +playerScoreCount+ " and computer's score is: "+computerScoreCount;
+        
     });
 
     //add buttons to DOM
@@ -141,25 +177,9 @@ function game(){
     
     
     
-    playerScoreCount = playerScoreCount + finalRoundScore[1];
-    computerScoreCount = computerScoreCount + finalRoundScore[2];
-    console.log('You now have '+playerScoreCount+ ' points');
-    console.log('Computer now has '+computerScoreCount+ ' points');
-    //console.log(finalRoundScore[1]);
     
-    if ( playerScoreCount > computerScoreCount ){
-        return 'You won with ' +playerScoreCount+ ' points, computer had '+computerScoreCount+ ' points';
-    }
-
-    else if ( playerScoreCount == computerScoreCount ){
-        return 'You tied with ' +playerScoreCount+ ' points, computer also had '+computerScoreCount+ ' points';
-    }
-
-    else{
-        return 'You lost with ' +playerScoreCount+ ' points, computer had '+computerScoreCount+ ' points';
-    }
 }
 
 //console.log(gameRound(playerSelection, computerSelection));
 
-console.log(game());
+game();
