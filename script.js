@@ -88,28 +88,37 @@ function game(){
     const scissorsButton = document.createElement('button');
     scissorsButton.textContent = 'scissors';
 
+    
+
+
     //add event listeners that call gameRound and select button option
     rockButton.addEventListener('click', () =>
     {
         let playerSelection  = 'rock';
-        let computerSelection = (getComputerChoice(['Rock', 'Paper', 'Scissors']));
+        let computerSelection = (getComputerChoice(['rock', 'paper', 'scissors']));
         finalRoundScore = gameRound(playerSelection, computerSelection);
+
+        //add result to DOM
+        display.textContent = 'You chose '+playerSelection+ ' Computer chose '+computerSelection;
+        
 
     });
 
     paperButton.addEventListener('click', () =>
     {
         let playerSelection  = 'paper';
-        let computerSelection = (getComputerChoice(['Rock', 'Paper', 'Scissors']));
+        let computerSelection = (getComputerChoice(['rock', 'paper', 'scissors']));
         finalRoundScore = gameRound(playerSelection, computerSelection);
+        console.log(playerSelection);
 
     });
 
     scissorsButton.addEventListener('click', () =>
     {
         let playerSelection  = 'scissors';
-        let computerSelection = (getComputerChoice(['Rock', 'Paper', 'Scissors']));
+        let computerSelection = (getComputerChoice(['rock', 'paper', 'scissors']));
         finalRoundScore = gameRound(playerSelection, computerSelection);
+        console.log(playerSelection);
 
     });
 
@@ -118,6 +127,13 @@ function game(){
     buttonCollection.appendChild(rockButton);
     buttonCollection.appendChild(paperButton);
     buttonCollection.appendChild(scissorsButton);
+
+    //add div for displaying results
+    const display = document.createElement('div');
+
+    //add div to DOM
+    const divSpace = document.querySelector('#container');
+    divSpace.appendChild(display);
 
 
 
