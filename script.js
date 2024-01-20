@@ -76,23 +76,27 @@ let playerScoreCount = 0;
 let computerScoreCount = 0;
 let finalRoundScore;
 
+
 //console.log(gameRound(playerSelection, computerSelection));
 
 function game(){
-    
+    //create buttons for the options
+    const rockButton = document.createElement('button');
+    rockButton.textContent = 'rock';
+    const paperButton = document.createElement('button');
+    paperButton.textContent = 'paper';
+    const scissorsButton = document.createElement('button');
+    scissorsButton.textContent = 'scissors';
 
-    for(i=1; i<=5; i++){
-        let playerSelection  = prompt ('Choose Rock Paper or Scissors');
-        let computerSelection = (getComputerChoice(['Rock', 'Paper', 'Scissors']));
-        finalRoundScore = gameRound(playerSelection, computerSelection);
-        //playerScoreCount = playerScoreCount + finalRoundScore[1];
-        //computerScoreCount = computerScoreCount + finalRoundScore[2];
-        playerScoreCount = playerScoreCount + finalRoundScore[1];
-        computerScoreCount = computerScoreCount + finalRoundScore[2];
-        console.log('You now have '+playerScoreCount+ ' points');
-        console.log('Computer now has '+computerScoreCount+ ' points');
-        //console.log(finalRoundScore[1]);
-    }
+    let playerSelection  = prompt ('Choose Rock Paper or Scissors');
+    let computerSelection = (getComputerChoice(['Rock', 'Paper', 'Scissors']));
+    finalRoundScore = gameRound(playerSelection, computerSelection);
+    playerScoreCount = playerScoreCount + finalRoundScore[1];
+    computerScoreCount = computerScoreCount + finalRoundScore[2];
+    console.log('You now have '+playerScoreCount+ ' points');
+    console.log('Computer now has '+computerScoreCount+ ' points');
+    //console.log(finalRoundScore[1]);
+    
     if ( playerScoreCount > computerScoreCount ){
         return 'You won with ' +playerScoreCount+ ' points, computer had '+computerScoreCount+ ' points';
     }
