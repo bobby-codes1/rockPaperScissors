@@ -113,6 +113,12 @@ function game(){
 
     });
 
+    //add buttons to DOM
+    const buttonCollection = document.querySelector('#container');
+    buttonCollection.appendChild(rockButton);
+    buttonCollection.appendChild(paperButton);
+    buttonCollection.appendChild(scissorsButton);
+
 
 
 
