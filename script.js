@@ -88,9 +88,37 @@ function game(){
     const scissorsButton = document.createElement('button');
     scissorsButton.textContent = 'scissors';
 
-    let playerSelection  = prompt ('Choose Rock Paper or Scissors');
-    let computerSelection = (getComputerChoice(['Rock', 'Paper', 'Scissors']));
-    finalRoundScore = gameRound(playerSelection, computerSelection);
+    //add event listeners that call gameRound and select button option
+    rockButton.addEventListener('click', () =>
+    {
+        let playerSelection  = 'rock';
+        let computerSelection = (getComputerChoice(['Rock', 'Paper', 'Scissors']));
+        finalRoundScore = gameRound(playerSelection, computerSelection);
+
+    });
+
+    paperButton.addEventListener('click', () =>
+    {
+        let playerSelection  = 'paper';
+        let computerSelection = (getComputerChoice(['Rock', 'Paper', 'Scissors']));
+        finalRoundScore = gameRound(playerSelection, computerSelection);
+
+    });
+
+    scissorsButton.addEventListener('click', () =>
+    {
+        let playerSelection  = 'scissors';
+        let computerSelection = (getComputerChoice(['Rock', 'Paper', 'Scissors']));
+        finalRoundScore = gameRound(playerSelection, computerSelection);
+
+    });
+
+
+
+
+    
+    
+    
     playerScoreCount = playerScoreCount + finalRoundScore[1];
     computerScoreCount = computerScoreCount + finalRoundScore[2];
     console.log('You now have '+playerScoreCount+ ' points');
