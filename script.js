@@ -92,6 +92,7 @@ function gameRound(playerSelection, computerSelection){
 //console.log(gameRound(playerSelection, computerSelection));
 
 function game(){
+    
     //create buttons for the options
     const rockButton = document.createElement('button');
     rockButton.textContent = 'rock';
@@ -106,9 +107,9 @@ function game(){
     //add event listeners that call gameRound and select button option
     rockButton.addEventListener('click', () =>
     {
-        let playerSelection  = 'rock';
-        let computerSelection = getComputerChoice(['rock', 'paper', 'scissors']);
-        finalRoundScore = gameRound(playerSelection, computerSelection);
+        let playerSelection  = 'rock'; //choose rock as the selection when the user clicks on the rock button
+        let computerSelection = getComputerChoice(['rock', 'paper', 'scissors']);  //computer makes selection here
+        finalRoundScore = gameRound(playerSelection, computerSelection);    //determine the score for the round
 
         //add result to DOM
         //display.textContent = 'You chose '+playerSelection+ ' Computer chose '+computerSelection;
@@ -159,7 +160,7 @@ function game(){
     });
 
     //add buttons to DOM
-    const buttonCollection = document.querySelector('#container');
+    const buttonCollection = document.querySelector('#container');  //select where the buttons will be, use the id as reference
     buttonCollection.appendChild(rockButton);
     buttonCollection.appendChild(paperButton);
     buttonCollection.appendChild(scissorsButton);
@@ -170,16 +171,13 @@ function game(){
     //add div to DOM
     const divSpace = document.querySelector('#container');
     divSpace.appendChild(display);
-
-
-
-
+    
+    if (playerScoreCount ==5 || computerScoreCount == 5){
+        return false;
+    }
     
     
-    
-    
+
 }
 
-//console.log(gameRound(playerSelection, computerSelection));
 
-game();
