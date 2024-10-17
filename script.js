@@ -181,3 +181,4 @@ function game(){
 }
 
 
+game();
